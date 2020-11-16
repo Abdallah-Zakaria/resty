@@ -31,7 +31,7 @@ class Form extends React.Component {
               <label htmlFor='DELETE' >DELETE
                 <input type='radio' id='DELETE' name='method' value='DELETE' />
               </label>
-              <button type="submit">GO!</button>
+              <button data-testid='button' type="submit">GO!</button>
             </div>
           </form>
         </div>
