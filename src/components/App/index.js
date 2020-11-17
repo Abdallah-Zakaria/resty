@@ -1,9 +1,10 @@
 import React from 'react';
 
-import Header from '../Header/Header.js';
-import Form from '../Form/Form.js';
-import Footer from '../Footer/Footer.js';
-import Results from '../Results/Results.js'
+import Header from '../Header';
+import Form from '../Form';
+import Footer from '../Footer';
+import Results from '../Results';
+import History from '../History';
 import './App.css';
 
 
@@ -23,6 +24,7 @@ class App extends React.Component {
       <>
         <Header />
         <Form updateState={this.updateState} />
+        <History />
         <Results payload={this.state} />
         <Footer />
       </>
