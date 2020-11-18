@@ -1,13 +1,11 @@
 import React from 'react';
 
-import Header from '../Header/Header.js';
-import Form from '../Form/Form.js';
-import Footer from '../Footer/Footer.js';
-import Results from '../Results/Results.js'
-import './App.css';
+import Form from '../Form';
+import Results from '../Results';
+import History from '../History';
 
 
-class App extends React.Component {
+class Main extends React.Component {
   state = {
     url: '',
     method: '',
@@ -21,13 +19,12 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <Header />
-        <Form updateState={this.updateState} />
+        <Form updateState={this.updateState} reRun={this.props.location.query}/>
+        <History />
         <Results payload={this.state} />
-        <Footer />
       </>
     )
   }
 }
 
-export default App;
+export default Main;
