@@ -27,7 +27,7 @@ class HistoryDetals extends React.Component {
   render() {
     let history = localStorage.getItem("history") ? JSON.parse(localStorage.getItem("history")) : [];
     return (
-      <>
+      <div>
         {
           history.map((query, index) => {
             return (
@@ -43,12 +43,14 @@ class HistoryDetals extends React.Component {
               <p>{this.state.url}</p>
               <p>{this.state.method}</p>
               <p>{this.state.body}</p>
-              <ReactJson src={this.state.result} />
-              <Link to={{ pathname: '/', query: { url: this.state.url, method: this.state.method, body: this.state.body } }}>Re Run</Link>
+              <div id='result'>
+                <ReactJson  src={this.state.result} />
+              </div>
+              <Link id='link' to={{ pathname: '/', query: { url: this.state.url, method: this.state.method, body: this.state.body } }}>Re Run</Link>
             </div>
           </Then>
         </If>
-      </>
+      </div>
     )
   }
 }
