@@ -8,4 +8,25 @@ header{
     margin-left: 25px;
     color: white;
   }
+  nav{
+    position: absolute;
+    top:7px;
+    width: 100%;
+    text-align: center;
+    ul{
+      
+    }
+    ul li {
+      padding: 10px;
+      background-color: white;
+      border-radius: 50%;
+      font-weight: bold;
+      display: inline;
+      margin: 15px;
+    }
+  }
+}
+.active,
+.active:hover {
+  color: red;
 }

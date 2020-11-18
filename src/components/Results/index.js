@@ -19,7 +19,6 @@ class Results extends React.Component {
           </div>
         </Else>
       </If>
-
     )
   }
 }

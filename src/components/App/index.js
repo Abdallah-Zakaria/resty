@@ -1,10 +1,13 @@
 import React from 'react';
 
+import { Route, Switch } from 'react-router-dom';
 import Header from '../Header';
-import Form from '../Form';
 import Footer from '../Footer';
-import Results from '../Results';
-import History from '../History';
+import Home from '../Home';
+import HistoryDetals from '../HistoryDetals';
+import Help from '../Help';
+
+
 import './App.css';
 
 
@@ -21,13 +24,15 @@ class App extends React.Component {
   }
   render() {
     return (
-      <>
+      <main>
         <Header />
-        <Form updateState={this.updateState} />
-        <History />
-        <Results payload={this.state} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/history" component={HistoryDetals} />
+            <Route path="/help" component={Help} />
+          </Switch>
         <Footer />
-      </>
+      </main>
     )
   }
 }

@@ -13,8 +13,8 @@ class Form extends React.Component {
     e.preventDefault();
     this.setState({ isFeatching: true })
     superagent[e.target.method.value.toLowerCase()](e.target.url.value).send(e.target.body.value).then(data => {
-      // 
-      let query = { url: e.target.url.value, method: e.target.method.value, body: e.target.body.value }
+      console.log(data.body)
+      let query = { url: e.target.url.value, method: e.target.method.value, body: e.target.body.value  , result:data.body.results }
       let history = localStorage.getItem("history") ? JSON.parse(localStorage.getItem("history")) : [];
       let check = false;
 
@@ -29,7 +29,7 @@ class Form extends React.Component {
       } else {
         history.push(query)
         localStorage.setItem("history", JSON.stringify(history))
-        this.props.updateState({ url: e.target.url.value, method: e.target.method.value, header: data.header, count: data.body.count, result: data.body })
+        this.props.updateState({ url: e.target.url.value, method: e.target.method.value, header: data.header, count: data.body.length, result: data.body })
       }
       // 
     }).catch(err => {
@@ -39,8 +39,22 @@ class Form extends React.Component {
       // 
     })
   }
-
+  handelClick = ()=> {
+    let obj = this.props.reRun;
+    const selected = document.getElementById(`url`);
+    selected.value = obj.url;
+    const radiobtn = document.getElementById(obj.method);
+    radiobtn.checked = true;
+    const textarea = document.getElementById(`body`);
+    textarea.value = obj.body;
+  }
+  componentDidMount(){
+    if(this.props.reRun){
+      this.handelClick();
+    }
+  }
   render() {
+
     return (
       <main>
         <div id='container'>
@@ -63,7 +77,7 @@ class Form extends React.Component {
               </label>
               <button id='btn' data-testid='button' type="submit">GO!</button>
             </div>
-            <textarea name="body">
+            <textarea id="body" name="body">
 
             </textarea>
           </form>
